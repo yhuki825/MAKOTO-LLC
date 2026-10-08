@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--
+================================================================
+  合同会社真 ブランドサイト デザイン案（9/26ハウススタイル版）
+  コンセプト：「紹介を、確かな広告に。」
+    社名の一字「真」から着想。「真」には、偽りのないこと（まこと）、ものごとの中心（真ん中）、
+    曲がらないこと（真っ直ぐ）という意味が重なります。紹介型広告は、企業と新しいお客さまの
+    真ん中に立つ者が、偽りのない言葉で、まっすぐ手渡す広告である、という考え方で構成しました。
+    ・ヒーロー：握手の写真を短冊に切り分け、ずれていた短冊が一枚ずつ「真の位置」に揃っていく。
+      揃ったあと、真ん中に下げ振り（垂直を測る道具）の糸が下りるCanvas（写真処理型）
+    ・右端のスクロールレール：下げ振りの糸が伸び、スクロールの勢いで揺れて、まっすぐに戻る。傾きを表示
+    ・図：企業と新しいお客さまのあいだに「真」が立ち、人から人へ信頼が手渡されるSVG
+    ※所在地・地名・代表者名から着想した要素は採用していません。
+  書体：Zen Old Mincho ＋ Zen Kaku Gothic New ＋ Cormorant Garamond
+  配色：墨 #16130F ／ 和紙 #EDE6D8 ／ 真朱（しんしゅ）#C8553F
+  デプロイ：Cloudflare Pages（Direct Upload）にこのファイルをそのままアップロード。
+            ビルド不要。外部依存は Google Fonts と Unsplash 画像のみ。
+
+  ■ 公開前の確認事項（チェックリスト）
+  【確認事項】社名「真」の読み方（まこと／しん 等）。本案ではふりがな・英字表記を付けず、字の意味から着想しています
+  【確認事項】英字のサブコピー「Referral Advertising」は仮表記です
+  【確認事項】キャッチコピー・理念文・紹介型広告の仕組みの説明・進め方・代表メッセージは制作側の文案です
+  【確認事項】紹介型広告事業の具体的な仕組み（紹介元・報酬の形・対象業種など）
+  【確認事項】紹介や成果報酬の仕組みについて、景品表示法（ステルスマーケティング規制）や業種ごとの紹介に関する規制への対応方針
+  【確認事項】実績・数値・取引先は未確認のため掲載していません
+  【確認事項】代表者の役職名（合同会社のため「代表社員」と仮置き）
+  【確認事項】設立年月日・資本金・従業員数は未確認のため会社概要ではコメントアウト
+  【確認事項】代表メッセージは草案です。ご本人の確認・修正を経て公開してください
+  【確認事項】画像はUnsplashのフリー素材（仮）。実際の業務写真への差し替え推奨：
+              1521791136064-7986c2920216 / 1600880292203-757bb62b4baf / 1556761175-5973dc0f32e7
+  【確認事項】OGP画像・favicon（仮の「真」）・公開URL
+  ※ご依頼に合わせ、連絡用のフォーム・エリア、代表者写真は設けていません。
+================================================================
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>合同会社真｜企業の新規顧客獲得を支援する紹介型広告事業</title>
+<meta name="description" content="合同会社真は、企業の新規顧客獲得を支援する紹介型広告事業を行う広告業の会社です。人と人とのつながりの中で、企業の商品やサービスを必要としている方へ誠実に届けます。">
+<meta property="og:title" content="合同会社真｜紹介を、確かな広告に。">
+<meta property="og:description" content="企業の新規顧客獲得を支援する紹介型広告事業を行っています。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<!-- 【確認事項】og:url / og:image は公開ドメイン確定後に設定 -->
+<meta name="theme-color" content="#16130F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316130F'/%3E%3Crect x='4.5' y='4.5' width='23' height='23' fill='none' stroke='%23C8553F'/%3E%3Cpath d='M16 7v18M10 11h12M11 15h10M11 19h10M8 23h16' stroke='%23EDE6D8' stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  /* 墨と和紙、印の真朱 */
+  --sumi:#16130F;        /* 基調：墨 */
+  --sumi-2:#1F1A15;      /* 一段明るい墨 */
+  --sumi-deep:#0F0D0A;   /* フッター */
+  --shinshu:#C8553F;     /* 差し色：真朱 */
+  --base:var(--sumi);--base2:var(--sumi-2);--deep:var(--sumi-deep);--base-rgb:22,19,15;
+  --text:#EDE6D8;--mute:#9C9284;--soft:rgba(237,230,216,.8);
+  --accent:var(--shinshu);--accent-rgb:200,85,63;
+  --line:rgba(237,230,216,.13);--line-strong:rgba(237,230,216,.3);
+  --paper:#EFE8DA;--ink:#1F1A15;--ink-rgb:31,26,21;--ink-mute:#6A6054;--accent-ink:#A33A2C; /* 和紙 */
+  --fallback:repeating-linear-gradient(90deg,rgba(237,230,216,.06) 0 1px,transparent 1px 34px),linear-gradient(160deg,#1F1A15,#0F0D0A);
+  --serif:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --latin:"Cormorant Garamond","Times New Roman",serif;
+  --mono:"Cormorant Garamond","Times New Roman",serif;
+  --num:var(--latin);
+  --header-h:72px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--base);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.9;letter-spacing:.04em;word-break:auto-phrase;text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4,p,figure,dl,dd{margin:0}
+.nw{display:inline-block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--accent);color:var(--base);padding:10px 16px;text-decoration:none;font-weight:700;transition:top .2s}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:min(1160px,100% - 48px);margin:0 auto}
+.sec{padding:clamp(96px,14vw,180px) 0;position:relative}
+.alt{background:var(--base2);--sec-bg:var(--base2)}
+.deep{background:var(--deep);--sec-bg:var(--deep)}
+.paper{background:var(--paper);color:var(--ink);--line:rgba(var(--ink-rgb),.16);--line-strong:rgba(var(--ink-rgb),.5);--mute:var(--ink-mute);--soft:rgba(var(--ink-rgb),.82);--sec-bg:var(--paper);--accent:var(--accent-ink)}
+p+p{margin-top:1.3em}
+
+/* header */
+.header{position:fixed;inset:0 0 auto 0;z-index:100;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
+.header.is-scrolled{background:rgba(var(--base-rgb),.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.header-in{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(20px,4vw,56px);max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.logo svg{flex:none}
+.gnav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(16px,2.2vw,34px)}
+.gnav a{position:relative;display:block;padding:6px 0;text-decoration:none;font-size:13px;letter-spacing:.12em}
+.menu-btn{display:none;background:none;border:0;color:var(--text);width:44px;height:44px;cursor:pointer;position:relative;flex:none}
+.menu-btn span{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;transition:transform .3s,opacity .3s}
+.menu-btn span:nth-child(1){top:16px}.menu-btn span:nth-child(2){top:22px}.menu-btn span:nth-child(3){top:28px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:900px){
+ :root{--header-h:64px}
+ .menu-btn{display:block;z-index:120}
+ .gnav{position:fixed;inset:0;background:rgba(var(--base-rgb),.97);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;padding:env(safe-area-inset-top,0px) 24px env(safe-area-inset-bottom,0px)}
+ .gnav.is-open{opacity:1;visibility:visible}
+ .gnav ul{flex-direction:column;align-items:center;gap:26px}
+ .gnav a{font-family:var(--serif);font-size:20px;letter-spacing:.14em}
+}
+
+/* hero shared */
+.hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden}
+.hero canvas{display:block}
+.js .hero [data-in]{opacity:0;transform:translateY(14px);transition:opacity 1.2s cubic-bezier(.22,.7,.2,1),transform 1.2s cubic-bezier(.22,.7,.2,1)}
+.js .hero .v[data-in]{transform:translateY(-14px)}
+.js .is-loaded .hero [data-in]{opacity:1;transform:none}
+.is-loaded .hero [data-in="2"]{transition-delay:.4s}
+.is-loaded .hero [data-in="3"]{transition-delay:.85s}
+.is-loaded .hero [data-in="4"]{transition-delay:1.25s}
+.scroll-cue{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;font-family:var(--latin);font-size:12px;letter-spacing:.24em;color:var(--mute);text-decoration:none}
+.scroll-cue i{display:block;width:1px;height:44px;background:linear-gradient(var(--mute),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* reveal (JS only) */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity 1s cubic-bezier(.22,.7,.2,1),transform 1s cubic-bezier(.22,.7,.2,1)}
+.js .reveal.is-in{opacity:1;transform:none}
+.js .reveal--fade{transform:none}
+
+/* photos */
+.ph{position:relative;overflow:hidden;margin:0;background:linear-gradient(135deg,var(--base2),var(--deep))}
+.ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.03)}
+.ph.is-fallback{background:var(--fallback)}
+
+/* draw figures */
+.fig{margin:0}
+.fig svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto;overflow:visible}
+.fig figcaption{margin-top:16px;text-align:center;font-size:13px;color:var(--mute);letter-spacing:.08em}
+.fig .ln{fill:none;stroke:var(--accent);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s cubic-bezier(.45,.05,.2,1) .3s}
+.fig .ln.d2{transition-delay:.9s}.fig .ln.d3{transition-delay:1.5s}.fig .ln.d4{transition-delay:2.1s}.fig .ln.d5{transition-delay:2.7s}
+.fig .soft{fill:none;stroke:var(--line-strong);stroke-width:1}
+.fig .dot{fill:var(--accent);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3);transition:opacity .8s 1.2s,transform .8s cubic-bezier(.3,1.6,.5,1) 1.2s}
+.fig .lbl{fill:currentColor;font-family:var(--serif);font-size:17px;letter-spacing:.16em;opacity:0;transition:opacity 1s 1.8s}
+.fig .lbl-s{fill:var(--mute);font-family:var(--sans);font-size:11px;letter-spacing:.14em;opacity:0;transition:opacity 1s 2s}
+.fig.is-in .ln{stroke-dashoffset:0}
+.fig.is-in .dot{opacity:1;transform:none}
+.fig.is-in .lbl,.fig.is-in .lbl-s{opacity:1}
+
+/* band */
+.band{position:relative;height:clamp(260px,44vw,540px);overflow:hidden;margin:0;background:var(--fallback)}
+.band img{position:absolute;left:0;top:-9%;width:100%;height:118%;object-fit:cover;filter:saturate(.7) brightness(.66);will-change:transform}
+.band figcaption{position:absolute;left:clamp(24px,6vw,88px);bottom:clamp(24px,5vw,56px);right:24px;z-index:1;font-family:var(--serif);font-size:clamp(18px,2vw,24px);letter-spacing:.16em;line-height:1.9;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+
+/* business rows */
+.biz-intro{max-width:36em;margin:-24px 0 clamp(56px,8vw,96px);color:var(--mute)}
+.biz{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.biz+.biz{margin-top:clamp(72px,10vw,128px)}
+.biz:nth-of-type(even) .biz__media{order:2}
+.biz__media{aspect-ratio:4/3}
+.biz__media img{transform:scale(1.06);transition:transform 2.2s cubic-bezier(.2,.6,.2,1)}
+.biz.is-in .biz__media img{transform:scale(1)}
+.biz:hover .biz__media img{transform:scale(1.03)}
+.biz__kind{margin:0 0 10px;font-size:13px;letter-spacing:.16em;color:var(--accent)}
+.biz h3{font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.3vw,28px);line-height:1.6;letter-spacing:.08em;margin:0 0 18px}
+.biz p{color:var(--soft)}
+.tags{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{font-size:12.5px;letter-spacing:.08em;padding:4px 13px;border:1px solid var(--line-strong);border-radius:999px}
+.note{font-size:13px;color:var(--mute);margin:18px 0 0}
+@media (max-width:900px){.biz{grid-template-columns:minmax(0,1fr)}.biz:nth-of-type(even) .biz__media{order:0}}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:clamp(16px,2.4vw,32px);position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:var(--line)}
+.steps::after{content:"";position:absolute;left:0;top:11px;height:1px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.6,.1,.2,1)}
+.steps.is-in::after{transform:scaleX(1)}
+.step{position:relative;padding-top:46px}
+.step__dot{position:absolute;left:0;top:0;width:23px;height:23px;border-radius:50%;border:1px solid var(--mute);background:var(--sec-bg,var(--base));display:grid;place-items:center}
+.step__dot::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .5s cubic-bezier(.3,1.6,.5,1) var(--d,0s)}
+.steps.is-in .step__dot::after{transform:scale(1)}
+.step__no{font-family:var(--num);font-size:13px;color:var(--accent);letter-spacing:.12em}
+.step h3{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.18em;margin:6px 0 4px}
+.step__sub{font-size:12.5px;color:var(--mute);letter-spacing:.1em;margin:0 0 10px}
+.step p{font-size:14.5px;margin:0;color:var(--soft)}
+.step p+p{margin-top:0}
+.loop{display:flex;align-items:center;gap:14px;margin:52px 0 0;color:var(--mute);font-size:14px}
+.loop svg{flex:none}
+@media (max-width:900px){
+ .steps{grid-template-columns:minmax(0,1fr);gap:0;padding-left:42px}
+ .steps::before,.steps::after{left:11px;right:auto;top:10px;bottom:10px;width:1px;height:auto}
+ .steps::after{transform:scaleY(0);transform-origin:top}
+ .steps.is-in::after{transform:scaleY(1)}
+ .step{padding:0 0 36px}
+ .step__dot{left:-42px}
+}
+
+/* message */
+.msg{display:flex;flex-direction:row-reverse;gap:clamp(40px,6vw,96px);justify-content:center;align-items:flex-start}
+.msg__title{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:.2em;line-height:1.7;margin:0;flex:none}
+.msg__body{writing-mode:vertical-rl;font-family:var(--serif);font-size:16.5px;line-height:2.3;letter-spacing:.14em;height:30em;max-width:100%;overflow-x:auto;overflow-y:hidden}
+.msg__body p{margin:0 0 0 1.5em}
+.msg__body .first{font-size:1.25em}
+.msg__sign{margin-top:auto!important;text-align:end;font-family:var(--sans)}
+.msg__sign small{display:block;font-size:13px;color:var(--mute);letter-spacing:.2em}
+.msg__sign strong{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.3em}
+@media (max-width:900px){
+ .msg{flex-direction:column;gap:32px}
+ .msg__title,.msg__body{writing-mode:horizontal-tb;height:auto}
+ .msg__body{line-height:2.1;letter-spacing:.06em;overflow:visible}
+ .msg__body p{margin:0 0 1.4em}
+ .msg__sign{text-align:right}
+}
+
+/* company */
+.company-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.profile{margin:0;border-top:1px solid var(--line-strong)}
+.profile>div{display:grid;grid-template-columns:9em minmax(0,1fr);gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.profile dt{color:var(--mute);font-size:14px;letter-spacing:.14em}
+.profile dd{margin:0}
+.profile ul{margin:0;padding:0;list-style:none}
+.profile li{position:relative;padding-left:1.2em}
+.profile li+li{margin-top:.3em}
+@media (max-width:900px){.company-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.profile>div{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* footer */
+.footer{background:var(--deep);border-top:1px solid var(--line);padding:clamp(56px,8vw,80px) 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.footer-in{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px}
+.footer-tag{margin:18px 0 0;font-family:var(--serif);font-size:clamp(15px,1.6vw,19px);letter-spacing:.18em}
+.footer-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 26px}
+.footer-nav a{text-decoration:none;font-size:13px;color:var(--mute);letter-spacing:.1em;transition:color .3s}
+.footer-nav a:hover{color:var(--text)}
+.copy{width:100%;margin:36px 0 0;font-family:var(--latin);font-size:12.5px;color:var(--mute);letter-spacing:.1em}
+
+/* rail base */
+.rail{position:fixed;right:clamp(10px,1.6vw,24px);top:50%;transform:translateY(-50%);height:min(54vh,480px);width:18px;z-index:90;pointer-events:none}
+.rail__line{position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--line-strong);opacity:.6}
+.rail__fill{position:absolute;left:8px;top:0;width:1px;height:100%;background:var(--accent);transform-origin:top;transform:scaleY(0)}
+.rail__tick{position:absolute;left:4px;width:9px;height:1px;background:rgba(var(--accent-rgb),.45);transition:width .4s,background .4s}
+.rail__tick.is-passed{width:11px;background:var(--accent)}
+.rail__read{position:absolute;right:22px;top:0;transform:translateY(-50%);font-family:var(--mono);font-size:11px;color:var(--mute);writing-mode:vertical-rl;letter-spacing:.14em;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.rail{right:6px;height:38vh}.rail__read{display:none}}
+
+.logo__mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--accent);font-family:var(--serif);font-weight:700;font-size:19px;color:var(--text);line-height:1}
+.logo__t{display:flex;flex-direction:column;line-height:1.15}
+.logo__t small{font-size:10px;color:var(--mute);letter-spacing:.2em}
+.logo__t b{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.24em}
+.gnav a{opacity:.82;transition:opacity .3s}
+.gnav a:hover,.gnav a:focus-visible{opacity:1}
+.gnav a::after{content:"";position:absolute;left:50%;top:-6px;width:1px;height:0;background:var(--accent);transition:height .35s}
+.gnav a:hover::after,.gnav a:focus-visible::after{height:6px}
+
+/* heading H4: JA + italic EN below */
+.sh{margin:0 0 clamp(40px,6vw,72px)}
+.sh h2{font-family:var(--serif);font-weight:600;font-size:clamp(25px,3vw,38px);line-height:1.55;letter-spacing:.12em}
+.sh__sub{margin:10px 0 0;font-family:var(--latin);font-style:italic;font-size:19px;letter-spacing:.06em;color:var(--accent)}
+
+/* hero : E photo-driven canvas */
+.hero{background:var(--base)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero__veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(22,19,15,.6) 0%,rgba(22,19,15,0) 28%,rgba(22,19,15,0) 55%,rgba(22,19,15,.92) 100%),linear-gradient(90deg,rgba(22,19,15,.55) 0%,rgba(22,19,15,0) 45%)}
+.hero__in{position:relative;z-index:1;min-height:100vh;min-height:100svh;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 40px;padding:calc(var(--header-h) + 48px) clamp(56px,7vw,120px) 64px clamp(20px,5vw,72px);pointer-events:none}
+.hero__in a,.hero__in p{pointer-events:auto}
+.hero h1{grid-column:2;grid-row:1;writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(36px,4.2vw,58px);line-height:1.6;letter-spacing:.22em;margin:0;text-shadow:0 2px 24px rgba(0,0,0,.5)}
+.hero h1 span{display:block}
+.hero h1 span+span{padding-top:2.6em}
+.hero__copy{grid-column:1;grid-row:1;align-self:end;max-width:30em}
+.hero__word{display:flex;align-items:baseline;gap:16px;margin:0 0 18px}
+.hero__word b{font-family:var(--serif);font-weight:700;font-size:clamp(56px,6vw,84px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(237,230,216,.75)}
+.hero__word span{font-size:13px;color:var(--soft);letter-spacing:.14em;line-height:1.9}
+.hero__en{font-family:var(--latin);font-style:italic;font-size:19px;letter-spacing:.06em;color:var(--accent);margin:0 0 10px}
+.hero__lead{font-size:15px;color:var(--soft)}
+.hero .scroll-cue{right:clamp(20px,4vw,56px);bottom:26px;font-style:italic;font-size:14px;letter-spacing:.12em}
+@media (max-width:760px){
+ .hero__in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto;padding:calc(var(--header-h) + 36px) 22px 40px}
+ .hero h1{grid-column:1;grid-row:1;writing-mode:horizontal-tb;font-size:clamp(30px,8.6vw,40px);letter-spacing:.08em}
+ .hero h1 span+span{padding-top:0;padding-left:1.2em}
+ .hero__copy{grid-row:3}
+ .hero .scroll-cue{display:none}
+}
+
+/* concept */
+.concept-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(40px,7vw,110px);align-items:center}
+.concept-text p{max-width:30em;color:var(--soft)}
+.concept-text .big{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);line-height:1.85;letter-spacing:.1em;color:var(--text)}
+.readings{list-style:none;margin:40px 0 0;padding:0}
+.readings li{display:grid;grid-template-columns:7em minmax(0,1fr);gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.readings li:last-child{border-bottom:1px solid var(--line)}
+.readings b{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.14em}
+.readings span{font-size:14.5px;color:var(--soft)}
+.fig .k{font-family:var(--serif);font-weight:700;font-size:64px;fill:var(--text);opacity:0;transition:opacity 1.2s 1s}
+.fig.is-in .k{opacity:1}
+.fig .node{fill:var(--base);stroke:var(--line-strong);stroke-width:1}
+@media (max-width:900px){.concept-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* business */
+.biz__media{aspect-ratio:4/3}
+.trio{list-style:none;margin:clamp(64px,9vw,112px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-strong)}
+.trio li{padding:28px clamp(16px,2.6vw,36px) 4px;border-left:1px solid var(--line)}
+.trio li:first-child{border-left:0;padding-left:0}
+.trio i{display:block;font-family:var(--latin);font-size:17px;color:var(--accent);margin-bottom:6px}
+.trio h3{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.14em;margin:0 0 8px}
+.trio p{font-size:14.5px;color:var(--soft)}
+.trio li.mid h3::before{content:"";display:inline-block;width:1px;height:.9em;background:var(--accent);margin-right:.6em;vertical-align:-.05em}
+@media (max-width:860px){.trio{grid-template-columns:minmax(0,1fr)}.trio li{border-left:0;padding:24px 0;border-bottom:1px solid var(--line)}}
+
+/* values : kanji rows */
+.vals{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+.vals li{display:grid;grid-template-columns:minmax(0,7em) minmax(0,16em) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;padding:clamp(24px,3vw,36px) 0;border-bottom:1px solid var(--line)}
+.vals .k{font-family:var(--serif);font-weight:700;font-size:clamp(56px,6vw,84px);line-height:1;color:transparent;-webkit-text-stroke:1px var(--accent)}
+.vals h3{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:.14em}
+.vals p{font-size:15px;color:var(--soft)}
+@media (max-width:760px){.vals li{grid-template-columns:minmax(0,1fr);gap:8px}}
+
+/* company (paper) */
+.profile li::before{content:"";position:absolute;left:.25em;top:.55em;width:1px;height:.9em;background:var(--accent)}
+
+/* rail : 下げ振り */
+.rail__fill{width:1px}
+.rail__bob{position:absolute;left:8px;top:0;width:14px;height:24px;margin-left:-7px;transform-origin:50% 0;transition:transform .9s cubic-bezier(.3,1.6,.5,1)}
+.rail__bob svg{display:block;width:14px;height:24px;fill:var(--accent);filter:drop-shadow(0 0 5px rgba(200,85,63,.6))}
+.rail.on-light .rail__bob svg{fill:var(--accent-ink);filter:none}
+
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .js .reveal,.js .hero [data-in]{opacity:1;transform:none}
+ .fig .ln{stroke-dashoffset:0}.fig .dot,.fig .lbl,.fig .lbl-s{opacity:1;transform:none}
+ .steps::after{transform:none}.step__dot::after{transform:scale(1)}
+ .biz__media img{transform:none}
+ .band img{transform:none!important}
+ .rail__bob{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="header" id="header">
+  <div class="header-in">
+    <!-- 【確認事項】ロゴは「真」の一字を枠で囲んだ仮ロゴです -->
+    <a class="logo" href="#top" aria-label="合同会社真 トップへ"><span class="logo__mark" aria-hidden="true">真</span><span class="logo__t"><small>合同会社</small><b>真</b></span></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+      <li><a href="#concept">社名のこと</a></li>
+      <li><a href="#business">事業内容</a></li>
+      <li><a href="#flow">進め方</a></li>
+      <li><a href="#values">大切にしていること</a></li>
+      <li><a href="#message">代表メッセージ</a></li>
+      <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="rail" id="rail" aria-hidden="true">
+  <div class="rail__line"></div>
+  <div class="rail__fill" id="railFill"></div>
+  <div class="rail__bob" id="railBob"><svg viewBox="0 0 14 24"><path d="M6.4 0h1.2v5H6.4z"/><path d="M7 5l6 7-6 12-6-12z"/></svg></div>
+  <span class="rail__read" id="railRead">傾き 0.0°</span>
+</div>
+
+<main id="main">
+<!-- ===== Hero (E: 写真処理型Canvas) ===== -->
+<section class="hero" id="top" data-rail aria-labelledby="heroTitle">
+  <!-- 画像：Unsplash（仮）1521791136064-7986c2920216（握手）。Canvasで短冊状に描画。差し替え推奨 -->
+  <canvas id="heroCanvas" aria-hidden="true" data-src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=1800&amp;q=72"></canvas>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <div class="hero__in">
+    <!-- 【確認事項】キャッチコピーは制作側の文案です -->
+    <h1 class="v" id="heroTitle" data-in="1"><span>紹介を、</span><span>確かな広告に。</span></h1>
+    <div class="hero__copy" data-in="3">
+      <!-- <p class="hero__word"><b aria-hidden="true">真</b><span>偽りのないこと。<br>ものごとの真ん中。<br>曲がらないこと。</span></p> -->
+      <!-- 【確認事項】英字サブコピーは仮表記です -->
+      <p class="hero__en" lang="en">Referral Advertising</p>
+      <p class="hero__lead">合同会社真は、企業の新規顧客獲得を支援する紹介型広告事業を行う、広告業の会社です。</p>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#concept" aria-label="次の章へ" data-in="4"><span lang="en">Scroll</span><i></i></a>
+</section>
+
+<!-- ===== Concept ===== -->
+<section class="sec" id="concept" data-rail aria-labelledby="coTitle">
+  <div class="wrap concept-grid">
+    <div class="concept-text reveal">
+      <div class="sh"><h2 id="coTitle"><span class="nw">真ん中に立つ、</span><span class="nw">という仕事。</span></h2><p class="sh__sub" lang="en">About our name</p></div>
+      <!-- 【確認事項】社名の由来は本案の解釈です（字の意味から着想。読み方は未確認）。理念文は制作側の文案です -->
+      <p class="big">「あの人がすすめるなら」。<span class="nw">その一言が、</span><span class="nw">どんな広告よりも人の背中を押すことがあります。</span></p>
+      <p>紹介は、企業とお客さまのあいだに立つ人が、自分の言葉で手渡す広告です。だからこそ、あいだに立つ者が言葉を飾れば、信頼はすぐに途切れてしまいます。</p>
+      <p>社名の一字「真」には、偽りのないこと、ものごとの中心、曲がらないこと、という意味が重なっています。私たちは企業と新しいお客さまの真ん中に立ち、よいと思えるものを、まっすぐに手渡します。</p>
+      <ul class="readings">
+        <li><b>まこと</b><span>偽りなく伝える。紹介の信頼を、何より大切にする。</span></li>
+        <li><b>真ん中</b><span>企業とお客さま、どちらか一方に寄りすぎない。</span></li>
+        <li><b>真っ直ぐ</b><span>回り道をせず、必要としている人へ届ける。</span></li>
+      </ul>
+    </div>
+    <figure class="fig reveal--fade" data-draw>
+      <svg viewBox="0 0 440 400" role="img" aria-labelledby="fT fD">
+        <title id="fT">企業と新しいお客さまのあいだに「真」が立つ図</title>
+        <desc id="fD">左に企業、右に新しいお客さま。その真ん中に「真」が立ち、上の弧で信頼が手渡され、下では人から人へ紹介がつながっていく。中央には垂直の糸が下りている。</desc>
+        <path class="ln" pathLength="1" d="M60 210 Q 220 70 380 210"/>
+        <path class="ln d2" pathLength="1" d="M220 20 V 330"/>
+        <path class="ln d3" pathLength="1" d="M60 280 q 40 -34 80 0 q 40 -34 80 0 q 40 -34 80 0 q 40 -34 80 0"/>
+        <circle class="node" cx="60" cy="210" r="30"/><circle class="node" cx="380" cy="210" r="30"/>
+        <circle class="dot" cx="140" cy="280" r="5"/><circle class="dot" cx="220" cy="280" r="5"/><circle class="dot" cx="300" cy="280" r="5"/>
+        <path class="dot" d="M220 330l8 10-8 18-8-18z"/>
+        <text class="k" x="220" y="202" text-anchor="middle">真</text>
+        <text class="lbl" x="60" y="216" text-anchor="middle">企業</text>
+        <text class="lbl-s" x="380" y="206" text-anchor="middle">新しい</text>
+        <text class="lbl-s" x="380" y="222" text-anchor="middle">お客さま</text>
+        <text class="lbl" x="150" y="112" text-anchor="middle">信頼</text>
+        <text class="lbl-s" x="220" y="312" text-anchor="middle">人から人へ</text>
+        <text class="lbl-s" x="60" y="264" text-anchor="middle">出会いを求める</text>
+        <text class="lbl-s" x="380" y="264" text-anchor="middle">確かな紹介で知る</text>
+      </svg>
+      <figcaption>あいだに立つ者が、まっすぐであること。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<figure class="band">
+  <!-- 画像：Unsplash（仮）1556761175-5973dc0f32e7 差し替え推奨 --><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&amp;fit=crop&amp;w=2000&amp;q=72" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()" aria-hidden="true">
+  <figcaption>信頼は、人から人へ<br>手渡されていく。</figcaption>
+</figure>
+
+<!-- ===== Business ===== -->
+<section class="sec" id="business" data-rail aria-labelledby="bizTitle">
+  <div class="wrap">
+    <div class="sh"><h2 id="bizTitle">事業内容</h2><p class="sh__sub" lang="en">Business</p></div>
+    <p class="biz-intro">広告業。企業の新規顧客獲得を支援する、紹介型広告事業を行っています。</p>
+    <!-- 【確認事項】事業の説明の膨らませた部分は制作側の文案です -->
+    <article class="biz reveal" aria-labelledby="b1">
+      <figure class="biz__media ph">
+        <!-- 画像：Unsplash（仮）1600880292203-757bb62b4baf 差し替え推奨 --><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&amp;fit=crop&amp;w=1400&amp;q=72" alt="打ち合わせのあとにハイタッチを交わす二人" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+      </figure>
+      <div>
+        <p class="biz__kind">紹介型広告事業</p>
+        <h3 id="b1">広く呼びかけるより、<br>確かに届ける。</h3>
+        <p>企業の新規顧客獲得を支援するための、紹介を軸にした広告事業です。</p>
+        <p>企業の商品やサービスを、信頼できるつながりを通じて紹介し、新しいお客さまとの出会いへとつなげます。不特定多数に呼びかけるのではなく、必要としている方へ届くことを大切にしています。</p>
+        <ul class="tags"><li>新規顧客獲得の支援</li><li>紹介を軸にした広告</li><li>信頼できるつながり</li></ul>
+      </div>
+    </article>
+    <!-- 【確認事項】紹介型広告の仕組み（三者の関係）は一般的な想定です。実際の仕組みに合わせて修正してください -->
+    <ul class="trio reveal">
+      <li><i lang="en">Client</i><h3>企業</h3><p>新しいお客さまとの出会いを求める。</p></li>
+      <li class="mid"><i lang="en">Us</i><h3>合同会社真</h3><p>あいだに立ち、紹介を軸に出会いをつくる。</p></li>
+      <li><i lang="en">Customer</i><h3>新しいお客さま</h3><p>信頼できる紹介で、商品やサービスを知る。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Flow ===== -->
+<section class="sec alt" id="flow" data-rail aria-labelledby="flTitle">
+  <div class="wrap">
+    <div class="sh"><h2 id="flTitle">進め方</h2><p class="sh__sub" lang="en">Flow</p></div>
+    <!-- 【確認事項】進め方の4段階は制作側の想定です。実際の手順なので番号を使用 -->
+    <ol class="steps reveal--fade" data-draw style="--n:4">
+      <li class="step"><span class="step__dot" aria-hidden="true"></span><span class="step__no">01</span><h3>うかがう</h3><p class="step__sub">商品とお客さまを知る</p><p>企業の商品やサービス、届けたいお客さまについてお話をうかがいます。</p></li>
+      <li class="step" style="--d:.6s"><span class="step__dot" aria-hidden="true"></span><span class="step__no">02</span><h3>設計する</h3><p class="step__sub">つながりを選ぶ</p><p>どのようなつながりで紹介するのが最適かを考えます。</p></li>
+      <li class="step" style="--d:1.2s"><span class="step__dot" aria-hidden="true"></span><span class="step__no">03</span><h3>紹介する</h3><p class="step__sub">まっすぐ手渡す</p><p>信頼を損なわないよう、誠実な紹介を行います。</p></li>
+      <li class="step" style="--d:1.8s"><span class="step__dot" aria-hidden="true"></span><span class="step__no">04</span><h3>振り返る</h3><p class="step__sub">次の出会いへ</p><p>結果を振り返り、次の出会いにつながる改善を重ねます。</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== Values ===== -->
+<section class="sec" id="values" data-rail aria-labelledby="vaTitle">
+  <div class="wrap">
+    <div class="sh"><h2 id="vaTitle">大切にしていること</h2><p class="sh__sub" lang="en">Values</p></div>
+    <!-- 【確認事項】3項目は制作側の文案です -->
+    <ul class="vals reveal">
+      <li><span class="k" aria-hidden="true">誠</span><h3>誠実に紹介する</h3><p>よいと思えるものを、偽りなく伝えます。紹介の信頼を何より大切にします。</p></li>
+      <li><span class="k" aria-hidden="true">縁</span><h3>出会いを大切に</h3><p>企業とお客さま、双方にとってよい出会いとなるよう心を配ります。</p></li>
+      <li><span class="k" aria-hidden="true">続</span><h3>長く続く関係を</h3><p>一度きりではなく、続いていく関係につながる紹介を目指します。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Message（草案） ===== -->
+<section class="sec deep" id="message" data-rail aria-labelledby="msgTitle">
+  <!-- 【確認事項】代表メッセージは草案です。ご本人の確認・修正を経て公開してください -->
+  <div class="wrap">
+    <div class="msg reveal">
+      <h2 class="msg__title" id="msgTitle">手渡す言葉に、<br>嘘をつかない。</h2>
+      <div class="msg__body">
+        <p class="first">紹介は、人の信頼を借りて届ける広告です。</p>
+        <p>だから私たちは、借りた信頼を傷つけるような紹介はしません。よいと思えるものを、よいと思える相手に、飾らない言葉で手渡す。それだけを続けていきます。</p>
+        <p>派手さよりも、確かさを。新しいお客さまとの出会いが、企業にとっても、お客さまにとっても、うれしいものであるように。</p>
+        <p>社名に込めた一字のとおり、まっすぐな仕事で、出会いをつくっていきます。</p>
+        <!-- 【確認事項】署名欄の氏名は会社概要に記載のため省略。役職名は仮 -->
+        <p class="msg__sign"><small>代表社員</small><strong>渡部拓哉</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Company ===== -->
+<section class="sec paper" id="company" data-rail data-light aria-labelledby="cpTitle">
+  <div class="wrap company-grid">
+    <div class="reveal">
+      <div class="sh"><h2 id="cpTitle">会社概要</h2><p class="sh__sub" lang="en">Company</p></div>
+    </div>
+    <div class="reveal">
+      <dl class="profile">
+        <div><dt>商号</dt><dd>合同会社真</dd></div>
+        <!-- 【確認事項】代表者の役職名の表記（合同会社のため「代表社員」と仮置き） -->
+        <div><dt>代表者</dt><dd>代表社員　渡部拓哉</dd></div>
+        <div><dt>所在地</dt><dd>〒330-0054　埼玉県さいたま市浦和区東岸町17-2</dd></div>
+        <div><dt>事業内容</dt><dd><ul><li>広告業（企業の新規顧客獲得を支援する紹介型広告事業）</li></ul></dd></div>
+        <!-- 【確認事項】設立年月日・資本金・従業員数は未確認のため非表示。確定後にコメントを外して記入 -->
+        <!--
+        <div><dt>設立</dt><dd>　年　月</dd></div>
+        <div><dt>資本金</dt><dd>　万円</dd></div>
+        <div><dt>従業員数</dt><dd>　名</dd></div>
+        -->
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>
+      <a class="logo" href="#top" aria-label="合同会社真 トップへ"><span class="logo__mark" aria-hidden="true">真</span><span class="logo__t"><small>合同会社真</small></span></a>
+      <p class="footer-tag">紹介を、確かな広告に。</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッターメニュー">
+      <ul>
+      <li><a href="#concept">社名のこと</a></li>
+      <li><a href="#business">事業内容</a></li>
+      <li><a href="#flow">進め方</a></li>
+      <li><a href="#values">大切にしていること</a></li>
+      <li><a href="#message">代表メッセージ</a></li>
+      <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+    <p class="copy"><small>&copy; <span id="year">2026</span> 合同会社真</small></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var railHooks = [], revealHooks = [];
+var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+var header = document.getElementById('header');
+var btn = document.getElementById('menuBtn'), nav = document.getElementById('gnav');
+function setMenu(open){
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  nav.classList.toggle('is-open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (open){ var f = nav.querySelector('a'); if (f) f.focus(); }
+}
+btn.addEventListener('click', function(){ setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+nav.addEventListener('click', function(e){ if (e.target.closest('a') && nav.classList.contains('is-open')) setMenu(false); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && nav.classList.contains('is-open')){ setMenu(false); btn.focus(); } });
+matchMedia('(min-width:901px)').addEventListener('change', function(m){ if (m.matches) setMenu(false); });
+
+/* canvas runner: DPR<=2, debounced resize, pauses offscreen / hidden tab, still frame on reduced motion */
+function runCanvas(cv, factory, stillT){
+  if (!cv || !cv.getContext) return null;
+  var ctx = cv.getContext('2d'); if (!ctx) return null;
+  var api = factory(ctx), W = 0, H = 0, running = false, visible = true, raf = 0, t0 = performance.now();
+  function resize(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    api.build(W, H);
+  }
+  function loop(now){ if (!running) return; api.draw((now - t0)/1000); raf = requestAnimationFrame(loop); }
+  function start(){ if (running || reduce || !visible || document.hidden) return; running = true; raf = requestAnimationFrame(loop); }
+  function stop(){ running = false; cancelAnimationFrame(raf); }
+  function still(){ api.draw(stillT || 99); }
+  resize();
+  if (reduce) still(); else start();
+  var rt, lastW = W;
+  addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){
+    if (cv.clientWidth === lastW && Math.abs(cv.clientHeight - H) < 120 && running) return;
+    lastW = cv.clientWidth; resize(); if (!running) still(); }, 150); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ visible = en[0].isIntersecting; visible ? start() : stop(); }).observe(cv.parentElement);
+  }
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+  return { still: still, redraw: function(){ if (!running) still(); } };
+}
+var pointer = {x:.5, y:.5, has:false};
+addEventListener('pointermove', function(e){ pointer.x = e.clientX/innerWidth; pointer.y = e.clientY/innerHeight; pointer.has = true; }, {passive:true});
+function clamp(v,a,b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
+function hash(i){ var x = Math.sin(i*127.1 + 3.7)*43758.5453; return x - Math.floor(x); }
+
+/* hero: 写真の短冊がずれた位置から「真の位置」へ揃い、真ん中に下げ振りの糸が下りる */
+var heroCv = document.getElementById('heroCanvas'), photo = new Image(), photoOk = false, heroRun;
+photo.crossOrigin = 'anonymous';
+photo.onload = function(){ photoOk = true; if (heroRun) heroRun.redraw(); };
+photo.src = heroCv.getAttribute('data-src');
+var sway = 0;
+heroRun = runCanvas(heroCv, function(ctx){
+  var W, H, n, strips = [];
+  function build(w, h){
+    W = w; H = h; n = W < 760 ? 12 : 22; strips = [];
+    for (var i = 0; i < n; i++){
+      var c = Math.abs(i - (n - 1)/2)/((n - 1)/2);
+      strips.push({ off:(hash(i + 3) - .5)*H*.62, d:.35 + c*1.5 + hash(i)*.25 });
+    }
+  }
+  function cover(){
+    var iw = photo.naturalWidth, ih = photo.naturalHeight, s = Math.max(W/iw, H/ih);
+    return { s:s, ox:(W - iw*s)/2, oy:(H - ih*s)/2 };
+  }
+  function draw(t){
+    ctx.clearRect(0, 0, W, H);
+    var sw = W/n, cv = photoOk ? cover() : null;
+    ctx.filter = 'grayscale(.7) brightness(.62) contrast(1.05)';
+    for (var i = 0; i < n; i++){
+      var st = strips[i], e = ease(clamp((t - st.d)/1.5, 0, 1)), x = i*sw, dy = st.off*(1 - e);
+      ctx.globalAlpha = .25 + .75*e;
+      if (cv){
+        var sx = (x - cv.ox)/cv.s, sy = (0 - cv.oy)/cv.s;
+        ctx.drawImage(photo, sx, sy, (sw + 1)/cv.s, H/cv.s, x, dy, sw + 1, H);
+      } else {
+        ctx.fillStyle = 'rgba(237,230,216,' + (.04 + .04*hash(i)) + ')'; ctx.fillRect(x, dy, sw - 1, H);
+      }
+      if (e < 1){ ctx.globalAlpha = (1 - e)*.6; ctx.fillStyle = 'rgba(22,19,15,1)'; ctx.fillRect(x + sw - 1, 0, 1, H); }
+    }
+    ctx.filter = 'none'; ctx.globalAlpha = 1;
+    /* 真朱の気配：揃った後、中央にほのかな光 */
+    var k = clamp((t - 2.6)/1.6, 0, 1);
+    var mx = W < 760 ? W*.5 : W*.56;
+    if (k > 0){
+      var g = ctx.createRadialGradient(mx, H*.48, 0, mx, H*.48, Math.max(W, H)*.45);
+      g.addColorStop(0, 'rgba(200,85,63,' + (.16*k) + ')'); g.addColorStop(1, 'rgba(200,85,63,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    }
+    /* 下げ振り：糸が下り、揺れが収まって真っ直ぐに */
+    var dk = ease(clamp((t - 2.9)/1.6, 0, 1));
+    if (dk > 0){
+      var L = H*.7*dk, age = Math.max(0, t - 4.2);
+      var target = (pointer.x - .5)*.05;
+      sway += (target - sway)*.03;
+      var ang = (reduce ? 0 : .09*Math.exp(-age*.55)*Math.sin(age*2.6) + sway*Math.min(1, age));
+      var bx = mx + Math.sin(ang)*L, by = Math.cos(ang)*L;
+      ctx.strokeStyle = 'rgba(200,85,63,.9)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(mx, 0); ctx.lineTo(bx, by); ctx.stroke();
+      ctx.save(); ctx.translate(bx, by); ctx.rotate(-ang);
+      ctx.fillStyle = 'rgba(200,85,63,1)';
+      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(8, 11); ctx.lineTo(0, 30); ctx.lineTo(-8, 11); ctx.closePath(); ctx.fill();
+      ctx.restore();
+      /* 真の垂直を示す目盛り */
+      ctx.fillStyle = 'rgba(237,230,216,' + (.5*dk) + ')';
+      for (var m = 1; m < 12; m++){ ctx.fillRect(mx - (m % 4 ? 3 : 7), H*.7*m/12, (m % 4 ? 6 : 14), 1); }
+    }
+  }
+  return { build: build, draw: draw };
+}, 30);
+
+/* rail: 下げ振りの糸が伸び、スクロールの勢いで揺れ、まっすぐに戻る */
+var bob = document.getElementById('railBob'), bRead = document.getElementById('railRead'), lastP = 0, settle;
+railHooks.push(function(p){
+  bob.style.top = (p*100) + '%'; bRead.style.top = (p*100) + '%';
+  var a = reduce ? 0 : clamp((p - lastP)*-900, -14, 14); lastP = p;
+  bob.style.transform = 'rotate(' + a.toFixed(1) + 'deg)';
+  bRead.textContent = '傾き ' + Math.abs(a).toFixed(1) + '°';
+  clearTimeout(settle);
+  settle = setTimeout(function(){ bob.style.transform = 'rotate(0deg)'; bRead.textContent = '傾き 0.0°'; }, 140);
+});
+
+/* reveal (one-shot) */
+var targets = document.querySelectorAll('.reveal, [data-draw]');
+function reveal(el){ el.classList.add('is-in'); revealHooks.forEach(function(h){ h(el); }); }
+if ('IntersectionObserver' in window && !reduce){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (!en.isIntersecting) return; reveal(en.target); io.unobserve(en.target); });
+  }, {threshold:.18, rootMargin:'0px 0px -6% 0px'});
+  targets.forEach(function(t){ io.observe(t); });
+} else { targets.forEach(reveal); }
+
+/* rail */
+var rail = document.getElementById('rail'), fill = document.getElementById('railFill');
+var secs = Array.prototype.slice.call(document.querySelectorAll('[data-rail]')), ticks = [];
+var lights = Array.prototype.slice.call(document.querySelectorAll('[data-light]'));
+function layoutTicks(){
+  ticks.forEach(function(t){ t.el.remove(); }); ticks = [];
+  var max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  secs.forEach(function(s){
+    var p = clamp(s.offsetTop / max, 0, 1), el = document.createElement('i');
+    el.className = 'rail__tick'; el.style.top = (p*100) + '%'; rail.appendChild(el); ticks.push({p:p, el:el});
+  });
+}
+var band = document.querySelector('.band img');
+function onScroll(){
+  header.classList.toggle('is-scrolled', scrollY > 40);
+  var max = document.documentElement.scrollHeight - innerHeight;
+  var p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+  if (fill) fill.style.transform = 'scaleY(' + p + ')';
+  ticks.forEach(function(t){ t.el.classList.toggle('is-passed', p >= t.p - .002); });
+  var mid = innerHeight/2, onLight = lights.some(function(s){ var r = s.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
+  rail.classList.toggle('on-light', onLight);
+  railHooks.forEach(function(h){ h(p, ticks); });
+  if (band && !reduce){
+    var r = band.parentElement.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight){ var k = (r.top + r.height/2 - innerHeight/2)/innerHeight; band.style.transform = 'translateY(' + (k*-40).toFixed(1) + 'px)'; }
+  }
+}
+var ticking = false;
+addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); } }, {passive:true});
+addEventListener('load', function(){ layoutTicks(); onScroll(); });
+addEventListener('resize', function(){ layoutTicks(); onScroll(); });
+layoutTicks(); onScroll();
+requestAnimationFrame(function(){ requestAnimationFrame(function(){ document.body.classList.add('is-loaded'); }); });
+})();
+</script>
+</body>
+</html>
